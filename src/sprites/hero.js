@@ -5,6 +5,8 @@ export default class Hero extends character {
   constructor(config) {
     super(config)
     this.isPlayerControlled = true;
+
+    this.bindHeroPositionCheck();
   }
 
   static preload(scene) {
@@ -16,7 +18,11 @@ export default class Hero extends character {
   }
 
   addAnims(anims) {
-    createAnimations(anims, this.id)
+    createAnimations(anims, this.sprite.id)
+  }
+
+  bindHeroPositionCheck() {
+    
   }
 
   initializeEntity() {
@@ -42,6 +48,7 @@ export default class Hero extends character {
     this.sprite.setExistingBody(compoundBody);
     this.sprite.setFixedRotation();
 
+    this.sprite.id = `${this.texture}`;
     this.addAnims(this.sprite.anims);
   }
 }

@@ -22,13 +22,12 @@ export default class OverworldEvent {
 
     // set up a handlet to complete when correct person is done standing
     const completeHandler = (e) => {
-      if (e.detail.whoId === this.event.who) {
-        document.removeEventListener("PersonStandingComplete", completeHandler);
+      if (e.whoId === this.event.who) {
         resolve();
       }
     }
 
-    document.addEventListener("PersonStandingComplete", completeHandler)
+    this.map.scene.events.on("PersonStandingComplete", completeHandler)
   }
 
   walk(resolve) {
@@ -43,12 +42,11 @@ export default class OverworldEvent {
 
     // set up a handler to compete when a person is done walking
     const completeHandler = (e) => {
-      if (e.detail.whoId === this.event.who) {
-        document.removeEventListener("PersonWalkingComplete", completeHandler);
+      if (e.whoId === this.event.who) {
         resolve();
       }
     }
 
-    document.addEventListener("PersonWalkingComplete", completeHandler)
+    this.map.scene.events.on('PersonWalkingComplete', completeHandler)
   }
 }

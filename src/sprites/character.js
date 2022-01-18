@@ -7,7 +7,6 @@ export default class character {
     this.y = config.y + 8;
     this.texture = config.texture;
     this.frame = config.frame;
-    this.id = config.id
 
     this.isPlayerControlled = config.isPlayerControlled || false;
     this.direction = config.direction || 'down'
@@ -30,7 +29,7 @@ export default class character {
     if (map.isCutScenePlaying || this.behaviorLoop.length === 0 || this.isStanding) return;
 
     let eventConfig = this.behaviorLoop[this.behaviorLoopIndex];
-    eventConfig.who = this.id;
+    eventConfig.who = this.sprite.id;
 
     const eventHandler = new OverworldEvent({ map, event: eventConfig });
     await eventHandler.init();
@@ -55,7 +54,12 @@ export default class character {
     this.direction = behavior.direction;
     if (behavior.type === "walk") {
       // todo: stop if space is not free
-
+      if (this.isTooCloseToHero) {
+        behavior.retry && setTimeout(() => {
+          this.startBehavior(state, behavior);
+        }, 10);
+        return
+      }
 
       // ready to walk
       this.movingProgressRemaining = 16;
@@ -65,8 +69,8 @@ export default class character {
     if (behavior.type === "stand") {
       this.isStanding = true;
       setTimeout(() => {
-        utils.emitEvent("PersonStandingComplete", {
-          whoId: this.id
+        this.scene.events.emit("PersonStandingComplete", {
+          whoId: this.sprite.id
         })
         this.isStanding = false;
       }, behavior.time)
@@ -97,16 +101,16 @@ export default class character {
 
     // finished walking
     if (this.movingProgressRemaining === 0) {
-      utils.emitEvent("PersonWalkingComplete", { whoId: this.id })
+      this.scene.events.emit("PersonWalkingComplete", { whoId: this.sprite.id })
     }
   }
 
   updateCharacter() {
     if (this.movingProgressRemaining > 0) {
-      this.sprite.play(`${this.id}-walk-${this.direction}`, true)
+      this.sprite.play(`${this.sprite.id}-walk-${this.direction}`, true)
       return
     }
     this.sprite.stop();
-    this.sprite.play(`${this.id}-idle-${this.direction}`)
+    this.sprite.play(`${this.sprite.id}-idle-${this.direction}`)
   }
 }

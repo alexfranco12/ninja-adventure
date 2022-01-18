@@ -34,16 +34,14 @@ export default class Home {
         scene: this.scene,
         x: 13 * 16,
         y: 7 * 16,
-        texture: 'Hero',
-        id: 'hero',
+        texture: 'hero',
         frame: 0,
       }),
       villager: new NPC({
         scene: this.scene,
         x: 18 * 16,
         y: 11 * 16,
-        texture: 'Villager',
-        id: 'villager',
+        texture: 'villager',
         frame: 0,
         behaviorLoop: [
           { type: 'walk', direction: 'left'},
