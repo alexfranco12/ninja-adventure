@@ -1,9 +1,4 @@
 const utils = {
-  // event handler
-  emitEvent(name, detail) {
-    const event = new CustomEvent(name, { detail });
-    document.dispatchEvent(event);
-  },
   // draw collision areas
   debugDraw(layer, scene) {
     const debugGraphics = scene.add.graphics().setAlpha(0.7)
