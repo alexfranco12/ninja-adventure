@@ -1,4 +1,4 @@
-import world from './src/world.js'
+import overworld from './src/overworld.js'
 
 let game;
 const gameOptions = {
@@ -12,7 +12,7 @@ var config = {
   width: gameOptions.width,
   height: gameOptions.height,
   background: '#000',
-  scene: [ world ],
+  scene: [ overworld ],
   scale: {
     parent: 'game-container',
     autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,
@@ -21,7 +21,7 @@ var config = {
   physics: {
     default: 'matter',
     matter: {
-      debug: true,
+      debug: false,
       gravity: { y: 0 }
     }
   },

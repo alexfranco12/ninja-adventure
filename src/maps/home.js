@@ -1,5 +1,14 @@
-let home = {
-  initialize: function(scene) {
+import Hero from '../sprites/hero.js';
+import NPC from '../sprites/npc.js'
+
+export default class Home {
+  constructor() {
+    this.id = 'Home';
+    this.isCutScenePlaying = false;
+  }
+
+  initialize(scene) {
+    this.scene = scene;
     const map = scene.make.tilemap({ key: 'home' });
 
     const elements = map.addTilesetImage('TilesetElement', 'elementTiles', 16, 16, 0, 0);
@@ -14,12 +23,35 @@ let home = {
     scene.matter.world.convertTilemapLayer(layer1);
     scene.matter.world.convertTilemapLayer(layer2);
 
-    scene.map = layer2;
+    scene.map = layer1;
 
     // debugger that displays the collision areas
-    utils.debugDraw(layer1, scene);
-    utils.debugDraw(layer2, scene);
-  },
-}
+    // utils.debugDraw(layer1, scene);
+    // utils.debugDraw(layer2, scene);
 
-export default home;
+    this.characters = {
+      hero: new Hero({
+        scene: this.scene,
+        x: 13 * 16,
+        y: 7 * 16,
+        texture: 'Hero',
+        id: 'Hero',
+        frame: 0,
+      }),
+      villager: new NPC({
+        scene: this.scene,
+        x: 18 * 16,
+        y: 11 * 16,
+        texture: 'Villager',
+        id: 'Villager',
+        frame: 0,
+        behaviorLoop: [
+          { type: 'walk', direction: 'left'},
+          { type: 'walk', direction: 'up'},
+          { type: 'walk', direction: 'right'},
+          { type: 'walk', direction: 'down'},
+        ]
+      })
+    }
+  }
+};
