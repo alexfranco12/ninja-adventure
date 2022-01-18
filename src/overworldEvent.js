@@ -11,7 +11,7 @@ export default class OverworldEvent {
   }
 
   stand(resolve) {
-    const who = this.map.location.characters[this.event.who];
+    const who = this.map.characters[this.event.who];
     who.startBehavior({
       map: this.map
     }, {
@@ -42,6 +42,10 @@ export default class OverworldEvent {
 
     // set up a handler to compete when a person is done walking
     const completeHandler = (e) => {
+      if (e.whoId === 'hero') {
+        this.map.checkForFootstepCutscene();
+      }
+
       if (e.whoId === this.event.who) {
         resolve();
       }

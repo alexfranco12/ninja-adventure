@@ -5,8 +5,6 @@ export default class Hero extends character {
   constructor(config) {
     super(config)
     this.isPlayerControlled = true;
-
-    this.bindHeroPositionCheck();
   }
 
   static preload(scene) {
@@ -19,10 +17,6 @@ export default class Hero extends character {
 
   addAnims(anims) {
     createAnimations(anims, this.sprite.id)
-  }
-
-  bindHeroPositionCheck() {
-    
   }
 
   initializeEntity() {
