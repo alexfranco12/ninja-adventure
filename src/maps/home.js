@@ -23,7 +23,7 @@ export default class Home {
     scene.matter.world.convertTilemapLayer(layer1);
     scene.matter.world.convertTilemapLayer(layer2);
 
-    scene.map = layer1;
+    scene.area = layer1;
 
     // debugger that displays the collision areas
     // utils.debugDraw(layer1, scene);
@@ -35,7 +35,7 @@ export default class Home {
         x: 13 * 16,
         y: 7 * 16,
         texture: 'Hero',
-        id: 'Hero',
+        id: 'hero',
         frame: 0,
       }),
       villager: new NPC({
@@ -43,12 +43,16 @@ export default class Home {
         x: 18 * 16,
         y: 11 * 16,
         texture: 'Villager',
-        id: 'Villager',
+        id: 'villager',
         frame: 0,
         behaviorLoop: [
           { type: 'walk', direction: 'left'},
+          { type: 'walk', direction: 'left'},
+          { type: 'walk', direction: 'up'},
           { type: 'walk', direction: 'up'},
           { type: 'walk', direction: 'right'},
+          { type: 'walk', direction: 'right'},
+          { type: 'walk', direction: 'down'},
           { type: 'walk', direction: 'down'},
         ]
       })

@@ -22,23 +22,32 @@ export default class character {
       "left" : ["x", -1],
      "right" : ["x",  1],
     }
+
+    this.isStanding = false;
   }
 
-  async doBehaviorEvent(scene) {
-    // if (this.behaviorLoop.length === 0) return;
+  async doBehaviorEvent(map) {
+    if (map.isCutScenePlaying || this.behaviorLoop.length === 0 || this.isStanding) return;
 
-    // let eventConfig = this.behaviorLoop[this.behaviorLoopIndex];
-    // eventConfig.who = this.id;
+    let eventConfig = this.behaviorLoop[this.behaviorLoopIndex];
+    eventConfig.who = this.id;
 
-    // const eventHandler = new OverworldEvent({ scene, event: eventConfig });
-    // await eventHandler.init();
+    const eventHandler = new OverworldEvent({ map, event: eventConfig });
+    await eventHandler.init();
 
-    // this.behaviorLoopIndex += 1;
-    // if (this.behaviorLoopIndex === this.behaviorLoop.length) {
-    //   this.behaviorLoopIndex = 0;
-    // }
+    this.behaviorLoopIndex += 1;
+    if (this.behaviorLoopIndex === this.behaviorLoop.length) {
+      this.behaviorLoopIndex = 0;
+    }
 
-    // this.doBehaviorEvent(scene)
+    this.doBehaviorEvent(map)
+  }
+
+  mount(map) {
+    // if behavior => kick off after short delay
+    setTimeout(() => {
+      this.doBehaviorEvent(map);
+    }, 10)
   }
 
   startBehavior(state, behavior) {
@@ -68,7 +77,7 @@ export default class character {
     if (this.movingProgressRemaining > 0) {
       this.updatePosition();
     } else {
-      if (!this.scene.location.isCutScenePlaying && this.isPlayerControlled && state.arrow) {
+      if (!this.scene.map.isCutScenePlaying && this.isPlayerControlled && state.arrow) {
         this.startBehavior(state, {
           type: 'walk',
           direction: state.arrow,
@@ -85,6 +94,11 @@ export default class character {
 
     this.shadow.x = this.sprite.x;
     this.shadow.y = this.sprite.y + 7;
+
+    // finished walking
+    if (this.movingProgressRemaining === 0) {
+      utils.emitEvent("PersonWalkingComplete", { whoId: this.id })
+    }
   }
 
   updateCharacter() {

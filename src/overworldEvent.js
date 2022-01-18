@@ -1,6 +1,6 @@
 export default class OverworldEvent {
-  constructor({ scene, event }) {
-    this.scene = scene;
+  constructor({ map, event }) {
+    this.map = map;
     this.event = event;
   }
 
@@ -11,9 +11,9 @@ export default class OverworldEvent {
   }
 
   stand(resolve) {
-    const who = this.scene.location.characters[this.event.who];
+    const who = this.map.location.characters[this.event.who];
     who.startBehavior({
-      scene: this.scene
+      map: this.map
     }, {
       type: "stand",
       direction: this.event.direction,
@@ -32,9 +32,9 @@ export default class OverworldEvent {
   }
 
   walk(resolve) {
-    const who = this.scene.characters[this.event.who];
+    const who = this.map.characters[this.event.who];
     who.startBehavior({
-      scene: this.scene
+      map: this.map
     }, {
       type: "walk",
       direction: this.event.direction,

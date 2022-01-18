@@ -7,7 +7,7 @@ export default class NPC extends character {
   }
 
   static preload(scene) {
-    scene.load.spritesheet('Villager', "/assets/actors/characters/Villager/SpriteSheet.png", {
+    scene.load.spritesheet('villager', "/assets/actors/characters/Villager/SpriteSheet.png", {
       frameWidth: 16,
       frameHeight: 16,
       endFrame: 28,
@@ -35,7 +35,7 @@ export default class NPC extends character {
     })
     const compoundBody = Body.create({
         parts: [ personCollider, personSensor ],
-        frictionAir: 0.00
+        frictionAir: 0.35
     });
 
     // stops the person from rotating when interacted with

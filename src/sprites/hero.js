@@ -8,7 +8,7 @@ export default class Hero extends character {
   }
 
   static preload(scene) {
-    scene.load.spritesheet('Hero', "/assets/actors/characters/GreenNinja/SpriteSheet.png", {
+    scene.load.spritesheet('hero', "/assets/actors/characters/GreenNinja/SpriteSheet.png", {
       frameWidth: 16,
       frameHeight: 16,
       endFrame: 28,
