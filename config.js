@@ -3,8 +3,8 @@ import dialogBox from './src/dialogBox.js'
 
 let game;
 const gameOptions = {
-  width: 60 * 16,
-  height: 40 * 16,
+  width: 48 * 16,
+  height: 32 * 16,
   aspectRatio: 16/9,
 }
 
@@ -20,6 +20,9 @@ var config = {
     zoom: 1,
   },
   pixelArt: true,
+  renderer: Phaser.CANVAS,
+  antialias: false,
+  crisp: true,
   physics: {
     default: 'matter',
     matter: {
@@ -45,9 +48,10 @@ var config = {
 
 window.onload = () => {
   game = new Phaser.Game(config);
-  window.focus();
-  resizeGame();
-  window.addEventListener('resize', resizeGame)
+  
+  // window.focus();
+  // resizeGame();
+  // window.addEventListener('resize', resizeGame)
 }
 
 // resize the game screen

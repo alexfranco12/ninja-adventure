@@ -56,7 +56,9 @@ export default class OverworldEvent {
 
   textMessage(resolve) {
     // todo: start a new scene to run in parrallel with current scene.
-    console.log(this)
     this.map.scene.events.emit("createDialog", this.event.text)
+    this.map.scene.scene.get('dialog-scene').events.on('PersonDoneTalking', () => {
+      resolve();
+    })
   }
 }

@@ -45,14 +45,9 @@ export default class Home {
         texture: 'villager',
         frame: 0,
         behaviorLoop: [
-          { type: 'walk', direction: 'left'},
-          { type: 'walk', direction: 'left'},
-          { type: 'walk', direction: 'up'},
-          { type: 'walk', direction: 'up'},
-          { type: 'walk', direction: 'right'},
-          { type: 'walk', direction: 'right'},
-          { type: 'walk', direction: 'down'},
-          { type: 'walk', direction: 'down'},
+          { type: 'stand', direction: 'up', time: 2000},
+          { type: 'stand', direction: 'left', time: 800},
+          { type: 'stand', direction: 'right', time: 1200},
         ]
       })
     };
@@ -76,15 +71,29 @@ export default class Home {
           "To explore the town, use the 'W', 'A', 'S', and 'D' keys on your keyboard. If you would like to chat to any of the villagers, press 'ENTER' to spark up a conversation. Good luck!"
         ]
       },
+      {who: 'villager', type: 'walk', direction: 'left'},
+      {who: 'villager', type: 'walk', direction: 'up'},
+      {who: 'villager', type: 'walk', direction: 'up'},
+      {who: 'villager', type: 'walk', direction: 'left'},
+      {who: 'villager', type: 'walk', direction: 'up'},
     ];
 
     this.cutSceneSpaces = {
       ['15, 14']: [
         {
           events: [
-            {who: 'villager', type: "walk", direction: 'left'},
+            {who: 'villager', type: "walk", direction: 'right'},
+            {who: 'villager', type: "walk", direction: 'right'},
             {who: 'villager', type: "stand", direction: 'down', time: 200},
             {who: 'hero', type: "walk", direction: 'up'},
+            {
+              type: "textMessage", 
+              text: [
+                "Good luck out there!",
+              ]
+            },
+            {who: 'villager', type: "walk", direction: 'left'},
+            {who: 'villager', type: "walk", direction: 'left'},
           ]
         }
       ],

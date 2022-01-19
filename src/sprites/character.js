@@ -54,7 +54,7 @@ export default class character {
     this.direction = behavior.direction;
     if (behavior.type === "walk") {
       // todo: stop if space is not free
-      if (this.isTooCloseToHero) {
+      if (!this.scene.map.isCutScenePlaying && this.isTooCloseToHero) {
         behavior.retry && setTimeout(() => {
           this.startBehavior(state, behavior);
         }, 10);
