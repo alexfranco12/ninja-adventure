@@ -37,6 +37,8 @@ const overworld = {
       character.mount(this.map);
     })
 
+    this.map.startCutScene(this.map.openingCutScene)
+
     /**
      * --- CAMERA ---
      */

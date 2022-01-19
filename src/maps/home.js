@@ -57,6 +57,27 @@ export default class Home {
       })
     };
 
+    /**
+     * --- CUTSCENES ---
+     */
+    this.openingCutScene = [
+      {who: 'hero', type: 'walk', direction: 'right'},
+      {who: 'hero', type: 'walk', direction: 'right'},
+      {who: 'hero', type: 'walk', direction: 'right'},
+      {who: 'hero', type: 'walk', direction: 'down'},
+      {who: 'hero', type: 'walk', direction: 'down'},
+      {who: 'villager', type: 'walk', direction: 'left'},
+      {who: 'villager', type: 'walk', direction: 'left'},
+      {who: 'villager', type: 'walk', direction: 'up'},
+      {
+        type: "textMessage", 
+        text: [
+          "Hey! Before you head out into town I should explain some things to you.",
+          "To explore the town, use the 'W', 'A', 'S', and 'D' keys on your keyboard. If you would like to chat to any of the villagers, press 'ENTER' to spark up a conversation. Good luck!"
+        ]
+      },
+    ];
+
     this.cutSceneSpaces = {
       ['15, 14']: [
         {

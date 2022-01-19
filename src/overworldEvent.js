@@ -53,4 +53,10 @@ export default class OverworldEvent {
 
     this.map.scene.events.on('PersonWalkingComplete', completeHandler)
   }
+
+  textMessage(resolve) {
+    // todo: start a new scene to run in parrallel with current scene.
+    console.log(this)
+    this.map.scene.events.emit("createDialog", this.event.text)
+  }
 }
