@@ -1,0 +1,32 @@
+.DialogBox {
+  position: relative;
+  width: 100%;
+  padding: 12px 10px 0 12px;
+  background-image: url('/assets/hud/dialog/DialogueBoxSimple.png');
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
+.Dialog_p {
+  position: absolute;
+  width: 60%;
+  top: 20px;
+  left: 150px;
+  margin: 0;
+  font-size: 14px;
+}
+.DialogBox span {
+  opacity: 0;
+}
+.DialogBox span.revealed {
+  opacity: 1;
+}
+
+.Dialog_button {
+  position: absolute;
+  bottom: 20px;
+  right: 145px;
+  font-size: 6px;
+  -webkit-appearance: none;
+}

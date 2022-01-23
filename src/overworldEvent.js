@@ -1,3 +1,5 @@
+import Dialog from './dialog.js'
+
 export default class OverworldEvent {
   constructor({ map, event }) {
     this.map = map;
@@ -55,10 +57,18 @@ export default class OverworldEvent {
   }
 
   textMessage(resolve) {
-    // todo: start a new scene to run in parrallel with current scene.
-    this.map.scene.events.emit("createDialog", this.event.text)
-    this.map.scene.scene.get('dialog-scene').events.on('PersonDoneTalking', () => {
-      resolve();
-    })
+    const message = new Dialog({
+      scene: this.map.scene,
+      text: this.event.text,
+      onComplete: () => resolve()
+    });
+    message.init(document.getElementById('game-container'));
+
+    // this.map.scene.add.dom(this.map.scene.game.config.width / 2, this.map.scene.game.config.height, 'div', 'background-color: #fff; width: 220px; height: 100px; font: 48px Arial', 'Phaser');
+
+    // this.map.scene.events.emit("createDialog", this.event.text)
+    // this.map.scene.scene.get('dialog-scene').events.on('PersonDoneTalking', () => {
+    //   resolve();
+    // })
   }
 }

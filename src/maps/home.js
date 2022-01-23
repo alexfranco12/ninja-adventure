@@ -66,10 +66,11 @@ export default class Home {
       {who: 'villager', type: 'walk', direction: 'up'},
       {
         type: "textMessage", 
-        text: [
-          "Hey! Before you head out into town I should explain some things to you.",
-          "To explore the town, use the 'W', 'A', 'S', and 'D' keys on your keyboard. If you would like to chat to any of the villagers, press 'ENTER' to spark up a conversation. Good luck!"
-        ]
+        text: "Hey! Before you head out into town I should explain some things to you."
+      },
+      {
+        type: "textMessage", 
+        text: "To explore the town, use the 'W', 'A', 'S', and 'D' keys on your keyboard. If you would like to chat to any of the villagers, press 'ENTER' to spark up a conversation. Good luck!"
       },
       {who: 'villager', type: 'walk', direction: 'left'},
       {who: 'villager', type: 'walk', direction: 'up'},
