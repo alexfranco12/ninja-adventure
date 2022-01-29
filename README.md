@@ -87,10 +87,6 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    git clone https://github.com/alexfranco12/ninja-adventure
    ```
-2. Install NPM packages
-   ```sh
-   npm i phaser
-   ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -98,6 +94,8 @@ This is an example of how to list things you need to use the software and how to
 
 <!-- How To Play -->
 ## How To Play
+- Explore the map by using the W, A, S, and D keys to move around.
+- Interact with other NPCs by clicking ENTER when next to and facing the NPC.
 
 
 
@@ -107,6 +105,11 @@ This is an example of how to list things you need to use the software and how to
 
 <!-- ROADMAP -->
 ## Roadmap
+- [ ] Create a tilemap to expolore.
+- [ ] Create a hero to control and walk around the map with.
+- [ ] Create NPCs to interact with.
+- [ ] Ensure all characters cannot walk through walls or other characters.
+- [ ] Create cutscenes that play when the hero walks into a certain area.
 
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
@@ -118,7 +121,7 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
+* [Pizza Legends - Drew Conley](https://www.youtube.com/hashtag/pizzalegends)
 * []()
 * []()
 
