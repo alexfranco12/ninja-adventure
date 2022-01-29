@@ -15,6 +15,8 @@ export default class character {
     this.behaviorLoop = config.behaviorLoop || [];
     this.behaviorLoopIndex = 0;
 
+    this.talking = config.talking || [];
+
     this.directionUpdate = {
         "up" : ["y", -1],
       "down" : ["y",  1],
@@ -53,7 +55,8 @@ export default class character {
     // set character direction
     this.direction = behavior.direction;
     if (behavior.type === "walk") {
-      // todo: stop if space is not free
+      
+      // todo: stop if space is not free 
       if (!this.scene.map.isCutScenePlaying && this.isTooCloseToHero) {
         behavior.retry && setTimeout(() => {
           this.startBehavior(state, behavior);

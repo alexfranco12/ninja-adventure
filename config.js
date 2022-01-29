@@ -1,5 +1,4 @@
 import overworld from './src/overworld.js'
-import dialogBox from './src/dialogBox.js'
 
 let game;
 const gameOptions = {

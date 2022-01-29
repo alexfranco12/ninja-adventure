@@ -32,6 +32,12 @@ const overworld = {
     this.directionInput = new DirectionInput()
     this.directionInput.init(this)
 
+    this.key = this.input.keyboard.addKey('ENTER')
+    this.key.on(`down`, () => {
+      // todo: check to see if there is someone to talk to.
+      this.map.checkForActionCutscene();
+    })
+
     Object.values(this.map.characters).forEach(character => {
       character.initializeEntity();
       character.mount(this.map);

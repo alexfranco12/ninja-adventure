@@ -1,4 +1,4 @@
-import Dialog from './dialog.js'
+import TextMessage from './textMessage.js'
 
 export default class OverworldEvent {
   constructor({ map, event }) {
@@ -57,18 +57,11 @@ export default class OverworldEvent {
   }
 
   textMessage(resolve) {
-    const message = new Dialog({
+    const message = new TextMessage({
       scene: this.map.scene,
       text: this.event.text,
       onComplete: () => resolve()
     });
-    message.init(document.getElementById('game-container'));
-
-    // this.map.scene.add.dom(this.map.scene.game.config.width / 2, this.map.scene.game.config.height, 'div', 'background-color: #fff; width: 220px; height: 100px; font: 48px Arial', 'Phaser');
-
-    // this.map.scene.events.emit("createDialog", this.event.text)
-    // this.map.scene.scene.get('dialog-scene').events.on('PersonDoneTalking', () => {
-    //   resolve();
-    // })
+    message.init();
   }
 }
