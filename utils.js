@@ -7,5 +7,11 @@ const utils = {
       collidingTileColor: new Phaser.Display.Color(243, 234, 48, 255),
       faceColor: new Phaser.Display.Color(40, 39, 37, 255),
     })
+  },
+  oppositeDirection(direction) {
+    if (direction === 'left') return "right";
+    if (direction === 'right') return "left";
+    if (direction === 'up') return "down";
+    return "up"
   }
 }

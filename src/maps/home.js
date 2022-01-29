@@ -52,10 +52,7 @@ export default class Home {
         talking: [
           {
             events: [
-              {
-                type: "textMessage", 
-                text: "Kick rocks.."
-              },
+              { type: "textMessage", text: "Kick rocks..", faceHero: "villager" },
             ]
           }
         ]
@@ -115,8 +112,6 @@ export default class Home {
     const pos = this.scene.area.worldToTileXY(hero.sprite.x, hero.sprite.y)
     const match = this.cutSceneSpaces[`${pos.x}, ${pos.y}`];
 
-    console.log(match)
-
     if (!this.isCutScenePlaying && match) {
       this.startCutScene(match[0].events)
     }
@@ -164,8 +159,6 @@ export default class Home {
       let characterY = this.scene.area.worldToTileY(object.sprite.y);
       return `${characterX}, ${characterY}` === `${nextCoords.x}, ${nextCoords.y}`
     })
-
-    console.log(match)
     
     // TODO: start talking cutscene 
     if (!this.isCutScenePlaying && match && match.talking.length) {

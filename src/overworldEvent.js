@@ -57,6 +57,11 @@ export default class OverworldEvent {
   }
 
   textMessage(resolve) {
+    if (this.event.faceHero) {
+      const obj = this.map.characters[this.event.faceHero];
+      obj.direction = utils.oppositeDirection(this.map.characters['hero'].direction)
+    }
+
     const message = new TextMessage({
       scene: this.map.scene,
       text: this.event.text,
