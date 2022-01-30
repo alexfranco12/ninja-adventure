@@ -1,9 +1,9 @@
-import overworld from './src/overworld.js'
+import Overworld from './src/overworld.js'
 
 let game;
 const gameOptions = {
   width: 48 * 16,
-  height: 32 * 16,
+  height: 27 * 16,
   aspectRatio: 16/9,
 }
 
@@ -12,7 +12,7 @@ var config = {
   width: gameOptions.width,
   height: gameOptions.height,
   background: '#000',
-  scene: [ overworld ],
+  scene: [ Overworld ],
   scale: {
     parent: 'game-container',
     autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,
@@ -49,9 +49,10 @@ var config = {
 window.onload = () => {
   game = new Phaser.Game(config);
   
-  // window.focus();
-  // resizeGame();
-  // window.addEventListener('resize', resizeGame)
+  // window resizes to screen
+  window.focus();
+  resizeGame();
+  window.addEventListener('resize', resizeGame)
 }
 
 // resize the game screen
