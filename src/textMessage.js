@@ -14,7 +14,7 @@ export default class TextMessage {
 
     this.createElement();
 
-    // todo: messages should toggle visible & invisible.
+    // TODO: messages should toggle visible & invisible.
     this.div.setElement(this.element);
 
     this.revealingText.init();
@@ -23,9 +23,10 @@ export default class TextMessage {
   createElement() {
     const x = this.scene.game.config.width;
     const y = this.scene.game.config.height;
-    const height = 100;
+    const height = this.scene.game.config.height / 4;
 
-    this.div = this.scene.add.dom(x/2, y-(height/2));
+    // TODO: fix the message placement so that the messages appear near the bottom and centered.
+    this.div = this.scene.add.dom(0, 0).setOrigin(0);
 
     this.element = document.createElement('div');
     this.element.classList.add('DialogBox');

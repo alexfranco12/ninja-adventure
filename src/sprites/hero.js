@@ -3,7 +3,13 @@ import { createAnimations } from "../animations/heroAnims.js";
 
 export default class Hero extends character {
   constructor(config) {
-    super(config)
+    const {scene, x, y, texture, frame} = config;
+    super(scene, x, y, texture, frame)
+    this.scene = scene;
+    this.x = scene.area.tileToWorldX(x) + 8;
+    this.y = scene.area.tileToWorldY(y) + 8;
+    this.texture = texture;
+    this.frame = frame;
     this.isPlayerControlled = true;
   }
 
@@ -20,7 +26,7 @@ export default class Hero extends character {
   }
 
   initializeEntity() {
-    this.shadow = this.scene.add.image(this.x, this.y + 7, 'shadow')
+    this.shadow = this.scene.add.image(this.x, this.y, 'shadow')
     this.sprite = this.scene.matter.add.sprite(this.x, this.y, this.texture, this.frame)
 
     // Person Collision and Sensor areas

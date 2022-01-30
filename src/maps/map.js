@@ -3,6 +3,7 @@ import OverworldEvent from '../overworldEvent.js';
 export default class Map {
   constructor() {
     this.isCutScenePlaying = false;
+    this.scene = null;
   }
 
   // FIXME: capture the position of the hero whenever they stop walking. 

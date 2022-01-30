@@ -3,7 +3,13 @@ import { createAnimations } from "../animations/npcAnims.js";
 
 export default class NPC extends character {
   constructor(config) {
-    super(config)
+    const {scene, x, y, texture, frame} = config;
+    super(scene, x, y, texture, frame)
+    this.scene = scene;
+    this.x = scene.area.tileToWorldX(x) + 8;
+    this.y = scene.area.tileToWorldY(y) + 8;
+    this.texture = texture;
+    this.frame = frame;
     this.isTooCloseToHero = false;
   }
 

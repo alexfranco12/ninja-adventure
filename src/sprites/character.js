@@ -2,12 +2,6 @@ import OverworldEvent from "../overworldEvent.js";
 
 export default class character {
   constructor(config) {
-    this.scene = config.scene;
-    this.x = config.x - 8;
-    this.y = config.y + 8;
-    this.texture = config.texture;
-    this.frame = config.frame;
-
     this.isPlayerControlled = config.isPlayerControlled || false;
     this.direction = config.direction || 'down'
     this.movingProgressRemaining = 0;
