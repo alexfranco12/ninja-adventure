@@ -69,4 +69,9 @@ export default class OverworldEvent {
     });
     message.init();
   }
+
+  changeMap(resolve) {
+    // TODO: destroy all current sprites before starting up new map.
+    this.map.scene.startMap(this.event.map)
+  }
 }
