@@ -1,5 +1,6 @@
 .DialogBox {
   position: relative;
+  height: 100%;
   width: 100%;
   padding: 12px 10px 0 12px;
   background-image: url('/assets/hud/dialog/DialogueBoxSimple.png');
