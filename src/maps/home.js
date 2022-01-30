@@ -8,9 +8,8 @@ export default class Home extends Map {
     this.id = 'Home';
   }
 
-  initialize(scene) {
-    this.scene = scene;
-    const map = scene.make.tilemap({ key: 'home' });
+  initialize() {
+    const map = this.scene.make.tilemap({ key: 'home' });
 
     const elements = map.addTilesetImage('TilesetElement', 'elementTiles', 16, 16, 0, 0);
     const floor = map.addTilesetImage('TilesetInteriorFloor', 'interiorFloorTiles', 16, 16, 0, 0);
@@ -21,27 +20,27 @@ export default class Home extends Map {
 
     layer1.setCollisionByProperty({ collides: true })
     layer2.setCollisionByProperty({ collides: true })
-    scene.matter.world.convertTilemapLayer(layer1);
-    scene.matter.world.convertTilemapLayer(layer2);
+    this.scene.matter.world.convertTilemapLayer(layer1);
+    this.scene.matter.world.convertTilemapLayer(layer2);
 
-    scene.area = layer1;
+    this.scene.area = layer1;
 
     // debugger that displays the collision areas
-    // utils.debugDraw(layer1, scene);
-    // utils.debugDraw(layer2, scene);
+    // utils.debugDraw(layer1, this.scene);
+    // utils.debugDraw(layer2, this.scene);
 
     this.characters = {
       hero: new Hero({
         scene: this.scene,
-        x: 13 * 16,
-        y: 7 * 16,
+        x: 13,
+        y: 7,
         texture: 'hero',
         frame: 0,
       }),
       villager: new NPC({
         scene: this.scene,
-        x: 18 * 16,
-        y: 11 * 16,
+        x: 18,
+        y: 11,
         texture: 'villager',
         frame: 0,
         behaviorLoop: [
