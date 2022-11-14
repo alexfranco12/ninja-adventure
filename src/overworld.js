@@ -11,6 +11,12 @@ class Overworld extends Phaser.Scene {
     // load tilesets
     this.load.image('floorTiles', './src/assets/Backgrounds/Tilesets/TilesetFloor.png')
 
+    this.load.spritesheet('hero', './src/assets/Actor/Characters/GreenNinja/SpriteSheet.png', {
+      frameWidth: 16,
+      frameHeight: 16,
+      endFrame: 28
+    });
+
     // load tiled map from JSON file
     this.load.tilemapTiledJSON('village', './src/assets/Maps/village.json')
   }
@@ -30,6 +36,9 @@ class Overworld extends Phaser.Scene {
       // debugger that displays the collision areas
       utils.debugDraw(layer, this);
     }
+
+    // add hero sprite
+    const hero = this.matter.add.sprite(100, 100, 'hero', 0)
   }
 
   update() {
