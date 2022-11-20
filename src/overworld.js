@@ -1,3 +1,4 @@
+import Hero from "./hero.js";
 
 class Overworld extends Phaser.Scene {
   constructor() {
@@ -11,17 +12,14 @@ class Overworld extends Phaser.Scene {
     // load tilesets
     this.load.image('floorTiles', './src/assets/Backgrounds/Tilesets/TilesetFloor.png')
 
-    this.load.spritesheet('hero', './src/assets/Actor/Characters/GreenNinja/SpriteSheet.png', {
-      frameWidth: 16,
-      frameHeight: 16,
-      endFrame: 28
-    });
-
     // load tiled map from JSON file
     this.load.tilemapTiledJSON('village', './src/assets/Maps/village.json')
+
+    Hero.preload(this);
   }
 
   create() {
+    console.log('Overworld has been created.')
     const map = this.make.tilemap({ key: 'village' })
     const floor = map.addTilesetImage('TilesetFloor', 'floorTiles', 16, 16)
 
@@ -38,11 +36,17 @@ class Overworld extends Phaser.Scene {
     }
 
     // add hero sprite
-    const hero = this.matter.add.sprite(100, 100, 'hero', 0)
+    this.hero = new Hero({
+      scene: this,
+      x: 100,
+      y: 100,
+      texture: 'hero',
+      frame: 0
+    })
   }
 
   update() {
-
+    this.hero.update()
   }
 }
 
