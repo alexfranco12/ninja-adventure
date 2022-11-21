@@ -11,7 +11,7 @@ var config = {
   type: Phaser.AUTO,
   width: gameOptions.width,
   height: gameOptions.height,
-  background: '#000',
+  // background: '#FFF',
   scene: [ Overworld ],
   scale: {
     parent: 'game-container',
@@ -26,7 +26,7 @@ var config = {
   physics: {
     default: 'matter',
     matter: {
-      debug: false,
+      debug: true,
       gravity: { y: 0 }
     }
   },
